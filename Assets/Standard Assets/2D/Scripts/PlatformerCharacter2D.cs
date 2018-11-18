@@ -79,12 +79,14 @@ namespace UnityStandardAssets._2D
                 m_Rigidbody2D.velocity = new Vector2(move*m_MaxSpeed, m_Rigidbody2D.velocity.y);
 
                 //
+                /* 
                 Debug.Log(move);
                 if (move != 0 && move < 0.09 && move > -0.09) {
                     allSounds[1].Play();
                 }
                 if (move == 0)
                     allSounds[1].Stop();
+                */
 
                 // If the input is moving the player right and the player is facing left...
                 if (move > 0 && !m_FacingRight)
@@ -123,5 +125,14 @@ namespace UnityStandardAssets._2D
             theScale.x *= -1;
             transform.localScale = theScale;
         }
+
+        private void playSoundJunpDown() {
+            AudioSource.PlayClipAtPoint(allSounds[0].clip, transform.position, 0.75f);
+        }
+
+        private void playSoundStep() {
+            AudioSource.PlayClipAtPoint(allSounds[1].clip, transform.position, 0.55f);
+        }
+
     }
 }
